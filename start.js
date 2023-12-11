@@ -5,6 +5,17 @@ async function start() {
     
     console.log("Running Servers");
 
+    // await new Promise(async resolve => {
+    //     exec("npm run start", {cwd: './www'})
+    //         .stdout.on('data', 
+    //             function(data) {
+    //                 console.log(data); 
+    //                 resolve();
+    //             }
+    //         )
+    //     }
+    // );
+
     await new Promise(async resolve => {
         exec("npm run serve", {cwd: './www'})
             .stdout.on('data', 
@@ -15,6 +26,9 @@ async function start() {
             )
         }
     );
+
+
+
     await new Promise(async resolve => {
         exec("pm2 logs", {cwd: './www'})
             .stdout.on('data', 
